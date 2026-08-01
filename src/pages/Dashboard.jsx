@@ -4,6 +4,7 @@ import { useUser } from "@clerk/clerk-react";
 import { Plus, ListChecks, Flame, CheckCircle2 } from "lucide-react";
 import { useHabits } from "../context/HabitContext.js";
 import HabitCard from "../components/HabitCard";
+import WeeklyActivityChart from "../components/WeeklyActivityChart";
 import gsap from "gsap";
 
 function getGreeting() {
@@ -100,6 +101,8 @@ export default function Dashboard() {
         ))}
       </div>
 
+      {habits.length > 0 && <WeeklyActivityChart />}
+
       <form onSubmit={handleSubmit} className="flex gap-2 mb-8">
         <input
           type="text"
@@ -112,10 +115,7 @@ export default function Dashboard() {
           type="submit"
           className="flex items-center gap-1 bg-cyan-400/90 text-slate-900 font-medium px-4 py-2.5 rounded-xl hover:bg-cyan-300 hover:scale-105 active:scale-95 transition-transform duration-150"
         >
-          <Plus
-            size={18}
-            className="transition-transform duration-200 group-hover:rotate-90"
-          />
+          <Plus size={18} />
           Add
         </button>
       </form>
