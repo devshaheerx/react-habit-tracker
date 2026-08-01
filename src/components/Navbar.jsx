@@ -38,7 +38,7 @@ export default function Navbar() {
   };
 
   const linkClass = ({ isActive }) =>
-    `flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 hover:scale-105 ${
+    `flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg text-sm font-medium transition-all duration-150 hover:scale-105 ${
       isActive
         ? "bg-cyan-400/15 text-cyan-300"
         : "text-slate-300 hover:bg-white/5 hover:text-white"
@@ -47,33 +47,34 @@ export default function Navbar() {
   return (
     <nav
       ref={navRef}
-      className="glass sticky top-0 z-50 flex items-center justify-between px-6 py-4 mx-4 mt-4 rounded-2xl"
+      className="glass sticky top-4 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 mx-2 sm:mx-4 mt-2 sm:mt-4 rounded-2xl"
     >
       <NavLink
         to="/"
-        className="flex items-center gap-2 font-display font-bold text-lg text-white hover:opacity-80 transition-opacity"
+        className="flex items-center gap-2 font-display font-bold text-base sm:text-lg text-white hover:opacity-80 transition-opacity"
       >
         <span ref={logoRef} className="text-cyan-400">
-          <CheckCircle2 size={22} />
+          <CheckCircle2 size={20} />
         </span>
-        HabitTracker
+        <span>HabitTracker</span>
       </NavLink>
 
       {isSignedIn && (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 sm:gap-2">
           <NavLink to="/" end className={linkClass}>
-            Dashboard
+            <span className="hidden sm:inline">Dashboard</span>
+            <CheckCircle2 size={16} className="sm:hidden" />
           </NavLink>
           <NavLink to="/settings" className={linkClass}>
             <Settings size={16} />
-            Settings
+            <span className="hidden sm:inline">Settings</span>
           </NavLink>
           <button
             onClick={handleSignOut}
-            className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-red-300 hover:bg-red-400/10 hover:scale-105 active:scale-95 transition-all duration-150"
+            className="flex items-center gap-1 px-2.5 sm:px-3 py-2 rounded-lg text-sm font-medium text-red-300 hover:bg-red-400/10 hover:scale-105 active:scale-95 transition-all duration-150"
           >
             <LogOut size={16} />
-            Sign Out
+            <span className="hidden sm:inline">Sign Out</span>
           </button>
         </div>
       )}

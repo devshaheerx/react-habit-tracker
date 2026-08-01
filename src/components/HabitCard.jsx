@@ -58,15 +58,15 @@ export default function HabitCard({ habit, onClick }) {
     <div
       ref={cardRef}
       onClick={onClick}
-      className="glass group flex items-center justify-between rounded-2xl px-5 py-4 cursor-pointer transition-all duration-200 hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-500/10"
+      className="glass group flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 rounded-2xl px-4 sm:px-5 py-3 sm:py-4 cursor-pointer transition-all duration-200 hover:bg-white/10 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-cyan-500/10"
     >
-      <div className="flex-1">
-        <h3 className="font-display font-semibold text-slate-100 group-hover:text-white transition-colors">
+      <div className="flex-1 min-w-[140px]">
+        <h3 className="font-display font-semibold text-sm sm:text-base text-slate-100 group-hover:text-white transition-colors truncate">
           {habit.name}
         </h3>
-        <div className="flex items-center gap-1 text-sm text-amber-400 mt-1 font-mono">
+        <div className="flex items-center gap-1 text-xs sm:text-sm text-amber-400 mt-1 font-mono">
           <span ref={flameRef} className="inline-flex">
-            <Flame size={14} fill={doneToday ? "#FBBF24" : "none"} />
+            <Flame size={13} fill={doneToday ? "#FBBF24" : "none"} />
           </span>
           {streak} day streak
         </div>
@@ -74,7 +74,7 @@ export default function HabitCard({ habit, onClick }) {
 
       <div
         ref={sparkRef}
-        className="w-20 h-10 mx-3 opacity-70 group-hover:opacity-100 transition-opacity"
+        className="hidden sm:block w-16 md:w-20 h-10 opacity-70 group-hover:opacity-100 transition-opacity shrink-0"
       >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={sparkData}>
@@ -103,10 +103,10 @@ export default function HabitCard({ habit, onClick }) {
         </ResponsiveContainer>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
         <button
           onClick={handleCheckIn}
-          className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-150 hover:scale-105 active:scale-95 ${
+          className={`px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-150 hover:scale-105 active:scale-95 whitespace-nowrap ${
             doneToday
               ? "bg-cyan-400/20 text-cyan-300 hover:bg-cyan-400/30"
               : "bg-white/5 text-slate-300 hover:bg-white/15"
@@ -116,9 +116,9 @@ export default function HabitCard({ habit, onClick }) {
         </button>
         <button
           onClick={handleDelete}
-          className="p-1.5 rounded-lg text-red-300 hover:bg-red-400/10 hover:scale-110 active:scale-95 transition-all duration-150"
+          className="p-1.5 rounded-lg text-red-300 hover:bg-red-400/10 hover:scale-110 active:scale-95 transition-all duration-150 shrink-0"
         >
-          <Trash2 size={16} />
+          <Trash2 size={15} />
         </button>
       </div>
     </div>

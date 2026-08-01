@@ -42,15 +42,15 @@ export default function WeeklyActivityChart() {
   }, []);
 
   return (
-    <div className="glass rounded-2xl p-4 mb-8 overflow-hidden">
+    <div className="glass rounded-2xl p-3 sm:p-4 overflow-hidden">
       <h3
         ref={titleRef}
-        className="font-display text-sm font-semibold text-slate-300 mb-2"
+        className="font-display text-xs sm:text-sm font-semibold text-slate-300 mb-2"
       >
         This Week's Activity
       </h3>
       <div ref={containerRef}>
-        <ResponsiveContainer width="100%" height={120}>
+        <ResponsiveContainer width="100%" height={100}>
           <BarChart
             data={data}
             margin={{ top: 4, right: 4, left: 4, bottom: 0 }}
@@ -61,7 +61,7 @@ export default function WeeklyActivityChart() {
               tickLine={false}
               tick={{
                 fill: "#94A3B8",
-                fontSize: 11,
+                fontSize: 10,
                 fontFamily: "IBM Plex Mono",
               }}
             />
@@ -79,7 +79,7 @@ export default function WeeklyActivityChart() {
             <Bar
               dataKey="count"
               radius={[6, 6, 0, 0]}
-              maxBarSize={28}
+              maxBarSize={24}
               animationDuration={900}
               animationEasing="ease-out"
             >

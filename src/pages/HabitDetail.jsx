@@ -64,29 +64,29 @@ export default function HabitDetail() {
   });
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-10">
+    <div className="max-w-2xl mx-auto px-3 sm:px-4 py-6 sm:py-10">
       <button
         onClick={() => navigate("/")}
-        className="flex items-center gap-1 text-slate-400 hover:text-slate-200 mb-6 text-sm"
+        className="flex items-center gap-1 text-slate-400 hover:text-slate-200 mb-4 sm:mb-6 text-sm"
       >
         <ArrowLeft size={16} />
         Back
       </button>
 
-      <div ref={panelRef} className="glass-strong rounded-2xl p-6">
-        <div className="flex items-start justify-between mb-4">
-          <div>
-            <h1 className="font-display text-xl font-bold text-white">
+      <div ref={panelRef} className="glass-strong rounded-2xl p-4 sm:p-6">
+        <div className="flex items-start justify-between mb-4 gap-2">
+          <div className="min-w-0">
+            <h1 className="font-display text-lg sm:text-xl font-bold text-white truncate">
               {habit.name}
             </h1>
-            <div className="flex items-center gap-1 text-amber-400 mt-1 font-mono">
+            <div className="flex items-center gap-1 text-amber-400 mt-1 font-mono text-sm sm:text-base">
               <Flame size={16} />
               <span ref={streakRef}>0</span> day streak
             </div>
           </div>
           <button
             onClick={handleDelete}
-            className="p-2 rounded-lg text-red-300 hover:bg-red-400/10 transition"
+            className="p-2 rounded-lg text-red-300 hover:bg-red-400/10 transition shrink-0"
           >
             <Trash2 size={18} />
           </button>
@@ -94,7 +94,7 @@ export default function HabitDetail() {
 
         <button
           onClick={() => toggleCheckIn(habit.id)}
-          className={`w-full py-2.5 rounded-xl font-medium mb-6 transition ${
+          className={`w-full py-2.5 rounded-xl font-medium mb-6 text-sm sm:text-base transition ${
             doneToday
               ? "bg-cyan-400/20 text-cyan-300"
               : "bg-cyan-400/90 text-slate-900 hover:bg-cyan-300"
@@ -104,11 +104,11 @@ export default function HabitDetail() {
         </button>
 
         <div>
-          <div className="flex items-center gap-1 text-sm text-slate-400 mb-2">
+          <div className="flex items-center gap-1 text-xs sm:text-sm text-slate-400 mb-2">
             <Calendar size={14} />
             Last 7 days
           </div>
-          <div className="flex gap-2">
+          <div className="flex gap-1.5 sm:gap-2 justify-between sm:justify-start">
             {last7Days.map((date) => {
               const checked = habit.checkIns.includes(date);
               const day = new Date(date).toLocaleDateString("en-US", {
@@ -117,7 +117,7 @@ export default function HabitDetail() {
               return (
                 <div key={date} className="flex flex-col items-center gap-1">
                   <div
-                    className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-mono ${
+                    className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-mono ${
                       checked
                         ? "bg-cyan-400 text-slate-900"
                         : "bg-white/5 text-slate-500"
@@ -125,7 +125,7 @@ export default function HabitDetail() {
                   >
                     {checked ? "✓" : ""}
                   </div>
-                  <span className="text-xs text-slate-500 font-mono">
+                  <span className="text-[10px] sm:text-xs text-slate-500 font-mono">
                     {day[0]}
                   </span>
                 </div>
