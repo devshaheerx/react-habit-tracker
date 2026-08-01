@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import gsap from "gsap";
 
 export default function Navbar() {
-  const { isSignedIn, user } = useUser();
+  const { isSignedIn } = useUser();
   const { signOut } = useClerk();
   const navigate = useNavigate();
   const navRef = useRef(null);
@@ -28,14 +28,11 @@ export default function Navbar() {
   }, []);
 
   const handleSignOut = async () => {
-    console.log("Sign out clicked");
     try {
       await signOut();
-      console.log("signOut() resolved — firing toast now");
       toast.success("Signed out");
       navigate("/sign-in");
     } catch (err) {
-      console.log("signOut() threw an error:", err);
       toast.error("Failed to sign out");
     }
   };
@@ -71,9 +68,6 @@ export default function Navbar() {
             <Settings size={16} />
             Settings
           </NavLink>
-          <span className="font-mono text-xs text-slate-400 ml-2">
-            {user?.firstName || user?.username}
-          </span>
           <button
             onClick={handleSignOut}
             className="flex items-center gap-1 px-3 py-2 rounded-lg text-sm font-medium text-red-300 hover:bg-red-400/10 hover:scale-105 active:scale-95 transition-all duration-150"
