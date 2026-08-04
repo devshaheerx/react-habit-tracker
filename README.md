@@ -67,6 +67,7 @@ npm run dev
 The app will be available at `http://localhost:5173`.
 
 ## Project Structure
+```
 src/
 main.jsx # App entry point, providers setup
 App.jsx # Root component, route/navbar logic
@@ -86,6 +87,7 @@ HabitDetail.jsx
 Settings.jsx
 SignInPage.jsx
 SignUpPage.jsx
+```
 ## Notes
 - Habit data is stored in the browser's localStorage, keyed by the signed-in user's Clerk ID — data does not sync across devices or browsers.
 - This project uses Clerk's development keys by default (shown in the console warning) — see [Clerk's deployment docs](https://clerk.com/docs/deployments/overview) before using this in production.
